@@ -128,7 +128,13 @@ while it<=time:
     update.reset_nodal_vaues(msh)
 
     # plot position of the last particle
-    plt.plot(it,msh.particles[-1].position,'ob',markersize=3)
+    plt.plot(it,msh.particles[-1].position,'ob',markersize=2)
     
     # advance in time
     it+=dt
+    
+# plot the analitycal solution
+from verifications import single_mass_point_vibration as smpv
+[anal_xt, anal_t] = smpv.single_mass_point_vibration_solution(1,50,1,time,dt,0.5,0.1)
+plt.plot(anal_t,anal_xt,'r',linewidth=2,label='analytical')
+plt.legend()
