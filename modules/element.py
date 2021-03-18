@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Tue Mar 16 08:29:59 2021
-
-@author: Fabricio Fernandez 
-@e-mail: fabricio.hmf@gmail.com
-
 Purpose
 -------
-This file defines classes for elements representation
+Defines classes for finite elements representation
+
+Data
+----
+Created on Tue Mar 16 08:29:59 2021
+
+Author
+------
+Fabricio Fernandez, <fabricio.hmf@gmail.com>
 
 """
 class bar_1D:

@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Tue Mar 16 16:17:03 2021
-
-@author: Fabricio Fernandez 
-@e-mail: fabricio.hmf@gmail.com
-
 Purpose
 -------
-This file defines nodal integration functions
+Defines nodal integration functions
 
+Data
+----
+Created on Tue Mar 16 16:17:03 2021
+
+Author
+------
+Fabricio Fernandez, <fabricio.hmf@gmail.com>
 """
 
 def total_force_in_nodes(msh):

@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+Purpose
+-------
+Defines classes for material point representation
+
+Data
+----
 Created on Mon Mar 15 15:22:44 2021
 
 Author
 ------
 Fabricio Fernandez (<fabricio.hmf@gmail.com>)
-
-Purpose
--------
-This file defines classes for a material point representation
-
 """
 
 class material_point:

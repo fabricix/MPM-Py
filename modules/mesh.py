@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+Purpose
+-------
+Defines classes for finite element mesh representation
+
+Data
+----
 Created on Mon Mar 15 15:25:13 2021
 
 Author
 ------
 Fabricio Fernandez (<fabricio.hmf@gmail.com>)
-
-Purpose
--------
-This file defines classes for finite element mesh representation
-
 """
 
 from modules import element

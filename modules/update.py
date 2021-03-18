@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+Purpose
+-------
+This file defines functions for updating tasks
+
+Data
+----
 Created on Tue Mar 16 16:24:45 2021
 
 Author
 ------
 Fabricio Fernandez (<fabricio.hmf@gmail.com>)
-
-Purpose
--------
-This file defines functions for updating tasks
-
 """
 from modules import interpolation as interp
 

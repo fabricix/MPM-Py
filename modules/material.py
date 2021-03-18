@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+Purpose
+-------
+Defines classes for material representation
+
+Data
+----
 Created on Mon Mar 15 15:24:37 2021
 
 Author
 ------
 Fabricio Fernandez (<fabricio.hmf@gmail.com>)
-
-Purpose
--------
-This file defines classes for material representation
-
 """
 
 class linear_elastic:

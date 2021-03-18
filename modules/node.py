@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+Purpose
+-------
+Defines classes for finite element node representation
+
+Data
+----
 Created on Tue Mar 16 09:08:17 2021
 
 Author
 ------
 Fabricio Fernandez (<fabricio.hmf@gmail.com>)
-
-Purpose
--------
-This file defines classes for a finite element node representation
-
 """
 class node_1D:
     """

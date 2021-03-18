@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+Purpose
+-------
+Defines interpolation functions
+
+Data
+----
 Created on Mon Mar 15 15:25:44 2021
 
 Author
 ------
 Fabricio Fernandez (<fabricio.hmf@gmail.com>)
-
-Purpose
--------
-This file defines interpolation functions
-
 """
 
 def Ni(x,xI,L):
