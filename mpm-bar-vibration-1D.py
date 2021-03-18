@@ -1,23 +1,23 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+Purpose
+-------
+This example approximates the 1D axial bar vibration problem using MPM.
+
+Data
+----
 Created on Mon Mar 15 13:53:24 2021
 
 Author
 ------
 Fabricio Fernandez (<fabricio.hmf@gmail.com>)
-
 """
 
-"""
-This example approximates the 1D axial bar vibration problem using MPM.
-
-"""
-
-# external libs
+# external modules
 import matplotlib.pyplot as plt # for plot
 
-# internal libs
+# local modules
 from modules import mesh # for mesh definition
 from modules import material # for material definition
 from modules import interpolation as interpola # for interpolation tasks
