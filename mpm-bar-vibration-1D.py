@@ -10,7 +10,7 @@ Fabricio Fernandez (<fabricio.hmf@gmail.com>)
 """
 
 """
-This examples resolves the axial bar vibration in 1D using MPM.
+This example approximates the 1D axial bar vibration problem using MPM.
 
 """
 
@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt # for plot
 # internal libs
 from modules import mesh # for mesh definition
 from modules import material # for material definition
-from modules import interpolation as interp # for interpolation tasks
+from modules import interpolation as interpola # for interpolation tasks
 from modules import integration as integra # for integration tasks
 from modules import update # for updating tasks
 
@@ -55,10 +55,10 @@ while it<=time:
     update.interpolation_functions_values(msh)
     
     # particle mass to grid nodal mass
-    interp.mass_to_nodes(msh)
+    interpola.mass_to_nodes(msh)
 
     # particle momentum to grid nodal momentum
-    interp.momentum_to_nodes(msh)
+    interpola.momentum_to_nodes(msh)
      
     # impose essential boundary conditions (in fixed nodes set mv=0)
     msh.elements[0].n1.momentum=0  
@@ -79,10 +79,10 @@ while it<=time:
         update.particle_stress(msh,dt)
         
     # particle internal force to nodes
-    interp.internal_force_to_nodes(msh)
+    interpola.internal_force_to_nodes(msh)
     
     # particle external forces to nodes
-    interp.external_force_to_nodes(msh)
+    interpola.external_force_to_nodes(msh)
 
     # calculate total force in node
     integra.total_force_in_nodes(msh)    
