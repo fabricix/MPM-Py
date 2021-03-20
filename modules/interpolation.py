@@ -91,7 +91,7 @@ def test(x1,x2,xI,L):
     
     plt.plot(x,ni,'-r',label=r'$N_I$')
     plt.plot(x,dni,'-b',label=r'$dN_I/dx$')
-    plt.plot(x,np.zeros_like(x),'-k')
+    plt.plot(x,np.zeros_like(x),'--k')
     plt.legend()
     plt.show()
     
