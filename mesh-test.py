@@ -22,7 +22,7 @@ from modules import material # for material definition
 L = 4
 
 # elements
-nelem = 3
+nelem = 2
 
 # particles per element
 p_per_elem = 2
