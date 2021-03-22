@@ -19,10 +19,10 @@ from modules import mesh # for mesh generation
 from modules import material # for material definition
 
 # domain
-L = 2
+L = 4
 
 # elements
-nelem = 2
+nelem = 3
 
 # particles per element
 p_per_elem = 2

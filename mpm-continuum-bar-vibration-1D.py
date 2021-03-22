@@ -3,11 +3,11 @@
 """
 Purpose
 -------
-This example approximates the 1D axial bar vibration problem using MPM.
+This example approximates the continuum 1D bar vibration problem using MPM.
 
 Data
 ----
-Created on Mon Mar 15 13:53:24 2021
+Created on Sat Mar 20 20:25:53 2021
 
 Author
 ------
@@ -16,6 +16,7 @@ Fabricio Fernandez (<fabricio.hmf@gmail.com>)
 
 # external modules
 import matplotlib.pyplot as plt # for plot
+import numpy as np # for sin
 
 # local modules
 from modules import mesh # for mesh definition
@@ -24,26 +25,39 @@ from modules import interpolation as interpola # for interpolation tasks
 from modules import integration as integra # for integration tasks
 from modules import update # for updating tasks
 
+# bar length
+L=25
+
+# number of elements
+nelements=15
+
 # create an 1D mesh
-msh = mesh.mesh_1D(L=1,nelem=1)
+msh = mesh.mesh_1D(L=L,nelem=nelements)
 
 # define a linear material 
-elastic = material.linear_elastic(E=50,density=1)
+elastic = material.linear_elastic(E=100,density=1)
 
 # put particles in mesh element and set the material
 msh.put_particles_in_mesh(ppelem=1,material=elastic)
 
 # simulation time 
-time = 3 # total time
-dt = 0.005 # time step
-it = 0 # initial time
+time = 60 # total time
+dt = 0.1  # time step
+it = 0.0  # initial time
 
 # verify time step
 dt_critical=msh.elements[0].L/(elastic.E/elastic.density)**0.5
 dt = dt if dt < dt_critical else dt_critical
 
-# impose initial condition in particle
-msh.particles[-1].velocity=0.1
+# impose initial condition in particles
+vo=0.1
+b1=np.pi/2.0/L
+for ip in msh.particles:
+  ip.velocity=vo*np.sin(b1*ip.position)
+
+# variables for plot
+x_plot=[]
+y_plot=[]
 
 # MPM scheme integration
 mpm_scheme='MUSL' # USL or USF or MUSL
@@ -127,14 +141,23 @@ while it<=time:
     # reset all nodal values
     update.reset_nodal_vaues(msh)
 
-    # plot position of the last particle
-    plt.plot(it,msh.particles[-1].position,'ob',markersize=2)
+    # store for plot
+    x_plot.append(it)
+    y_plot.append(msh.particles[-1].velocity)
     
     # advance in time
     it+=dt
     
+# plot mpm solution
+plt.plot(x_plot,y_plot,'ob',markersize=2,label='mpm')
+
 # plot the analytical solution
-from verifications import single_mass_point_vibration as smpv
-[anal_xt, anal_t] = smpv.single_mass_point_vibration_solution(1,50,1,time,dt,0.5,0.1)
-plt.plot(anal_t,anal_xt,'r',linewidth=2,label='analytical')
+from analytical import continuum_bar_vibration as cbv
+[anal_xt,anal_vt, anal_t] = cbv.continuum_bar_vibration_solution(L,elastic.E,elastic.density,time,dt,vo,msh.particles[-1].position)
+plt.plot(anal_t,anal_vt,'r',linewidth=2,label='analytical')
+
+# configure axis, legends and show plot
+plt.xlabel('time (s)')
+plt.ylabel('velocity (m/s)')
 plt.legend()
+plt.show()

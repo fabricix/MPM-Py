@@ -141,6 +141,11 @@ class mesh_1D:
                 plt.plot(ip.position,0,'ob')
                 if(print_labels):
                     plt.annotate("p%d"%ip.pid, xy=(ip.position,dy),fontsize=13)
+                    
+        ie = self.elements[0]
+        x = ie.n1.x
+        y = -0.04
+        plt.annotate("n = node\np = material point\ne = element", xy=(x,y),fontsize=13)
     
     def print_mesh_info(self):
         """

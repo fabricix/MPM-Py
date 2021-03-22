@@ -79,7 +79,7 @@ def test(x1,x2,xI,L):
     """
     import numpy as np
     import matplotlib.pyplot as plt
-
+    
     x = np.linspace(x1,x2,num=500);
     
     ni = np.zeros_like(x)
