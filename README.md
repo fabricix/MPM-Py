@@ -7,7 +7,11 @@ A Material Point Method implementation using Python: MPM-Py.
 ```git
 git clone https://github.com/fabricix/MPM-Py.git
 ```
+## Documentation
 
+```bash
+/html/modules/index.html
+```
 ## Requirements
 
 * Python 3.7.4 or superior
@@ -28,13 +32,13 @@ python mesh-test.py
 python interpolation-functions-test.py
 ```
 
-## Single mass bar vibration problem
+### Single mass bar vibration problem
 
 ```bash
 python mpm-single-mass-bar-vibration.py
 ```
 
-## Continuum bar vibration problem
+### Continuum bar vibration problem
 
 ```bash
 python mpm-continuum-bar-vibration.py

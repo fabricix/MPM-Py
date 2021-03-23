@@ -20,35 +20,49 @@ class material_point:
 
     Attributes
     ----------
+    
     mass : float
         particle mass
+    
     position  : float
         particle position
+    
     material : material type
         material
+    
     density : float
         particle density
-
+    
     velocity : float
         particle velocity
+    
     stress : float
         particle stress
+    
     dstrain : float
         particle strain increment
+    
     momentum : float
         particle momentum (mass*velocity)
+    
     pid : int
         particle identification
+    
     f_ext : float
         external force in particle
+    
     element : element type
         element containing the particle
+    
     N1 : float
         value of the interpolation function of node 1
+    
     N2 : float
         value of the interpolation function of node 2
+    
     dN1 : float
         value of the interpolation function gradient of node 1
+    
     dN2 : float
         value of the interpolation function gradient of node 2
     """

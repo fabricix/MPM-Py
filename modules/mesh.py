@@ -18,8 +18,7 @@ from modules import element
 from modules import node
 from modules import particle
 
-class mesh_1D:
-    
+class mesh_1D: 
     """
     A class to represent a 1D Eulerian mesh containing elements,
     nodes and particles.

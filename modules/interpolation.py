@@ -38,7 +38,6 @@ def Ni(x,xI,L):
         return 1-(x-xI)/L
 
 def dNi(x,xI,L):
-    
     """
     Calculate the values of the interpolation function gradient
     

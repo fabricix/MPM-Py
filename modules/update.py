@@ -49,7 +49,6 @@ def particle_position(msh,dt):
         
         ip.position+=(p1/m1*ip.N1+p2/m2*ip.N2)*dt
         
-        
 def nodal_velocity(msh):
     """
     calculate nodal velocity
@@ -69,8 +68,7 @@ def nodal_momentum(msh):
 
             ie.n1.momentum+=ip.mass*ip.velocity*ip.N1
             ie.n2.momentum+=ip.mass*ip.velocity*ip.N2
-            
-        
+              
 def particle_strain_increment(msh,dt):
     """
     calculate particle strain increment
@@ -94,7 +92,6 @@ def particle_density(msh,dt):
     for ip in msh.particles:
    
         ip.density = ip.density/(1+ip.dstrain)
-        
         
 def particle_stress(msh,dt):
     """
@@ -132,4 +129,3 @@ def  reset_nodal_vaues(msh):
         inode.f_int = 0
         inode.f_ext = 0
         inode.f_tot = 0
-        
