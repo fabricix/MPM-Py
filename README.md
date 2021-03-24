@@ -28,7 +28,6 @@ To read the documentation, open
 
 * Matplotlib 3.3.4 or superior
 
-* 
 
 ## Running tests and examples
 
