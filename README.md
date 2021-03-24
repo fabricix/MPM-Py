@@ -7,16 +7,28 @@ A Material Point Method implementation using Python: MPM-Py.
 ```git
 git clone https://github.com/fabricix/MPM-Py.git
 ```
+
 ## Documentation
+
+To create the documentation, run:
+
+```bash
+pdoc --html modules
+```
+
+To read the documentation, open
 
 ```bash
 /html/modules/index.html
 ```
+
 ## Requirements
 
 * Python 3.7.4 or superior
 
 * Matplotlib 3.3.4 or superior
+
+* 
 
 ## Running tests and examples
 
