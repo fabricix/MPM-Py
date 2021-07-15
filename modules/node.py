@@ -1,38 +1,39 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Purpose
--------
-Defines classes for finite element node representation
 
-Data
-----
-Created on Tue Mar 16 09:08:17 2021
-
-Author
-------
-Fabricio Fernandez (<fabricio.hmf@gmail.com>)
 """
+
+Represents a node in a finite element mesh
+
+"""
+
 class node_1D:
     """
-    Class to represents a 1D finite element node.
+    Represent a 1D node
     
     Attributes
     ---------
     nid : int
         node identification
+
     x : float
         position
+
     velocity : float
         nodal velocity
+
     mass : float
         nodal mass
+
     momentum : float
         nodal momentum (mass*velocity)
+
     f_int : float
         nodal internal force
+
     f_ext : float
         nodal external force
+        
     f_tot  : float
         total force
     """

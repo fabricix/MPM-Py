@@ -1,17 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
 """
-Purpose
--------
-Defines classes for finite element mesh representation
 
-Data
-----
-Created on Mon Mar 15 15:25:13 2021
+Represents a finite element mesh 
 
-Author
-------
-Fabricio Fernandez (<fabricio.hmf@gmail.com>)
 """
 
 from modules import element
@@ -82,7 +75,16 @@ class mesh_1D:
             
     def put_particles_in_mesh(self,ppelem,material):
         """
-        Function to distribute particles in elements mesh
+        Distributes particles in elements mesh
+        
+        Arguments
+        ---------
+        ppelem: int
+            number of particles per element
+
+        material: material
+            a material object
+
         """
         self.ppelem=ppelem
             
@@ -121,7 +123,12 @@ class mesh_1D:
         
     def print_mesh(self,print_labels=True):
         """
-        Function to print mesh in a plot
+        Function for print the mesh in a plot
+
+        Arguments
+        ---------
+        print_labels: bool
+            determines if the label of the mesh will be plotted
         """
         import matplotlib.pyplot as plt
         plt.cla()
@@ -149,7 +156,7 @@ class mesh_1D:
     
     def print_mesh_info(self):
         """
-        Function to print mesh informations
+        Function for print mesh informations
         """
         
         print(20*'--')

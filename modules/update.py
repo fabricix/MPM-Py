@@ -1,23 +1,23 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
 """
-Purpose
--------
+
 This file defines functions for updating tasks
 
-Data
-----
-Created on Tue Mar 16 16:24:45 2021
-
-Author
-------
-Fabricio Fernandez (<fabricio.hmf@gmail.com>)
 """
 from modules import interpolation as interp
 
 def particle_velocity(msh,dt):
     """
-    update particle velocity
+    Update particle velocity
+
+    Arguments
+    ---------
+    msh: mesh
+        a mesh object
+    dt: float
+        time step
     """
     for ip in msh.particles:
    
@@ -34,7 +34,14 @@ def particle_velocity(msh,dt):
         
 def particle_position(msh,dt):
     """
-    update particle position
+    Update particle position
+
+    Arguments
+    ---------
+    msh: mesh
+        a mesh object
+    dt: float
+        time step
     """
     for ip in msh.particles:
    
@@ -51,14 +58,24 @@ def particle_position(msh,dt):
         
 def nodal_velocity(msh):
     """
-    calculate nodal velocity
+    Calculate nodal velocity
+
+    Arguments
+    ---------
+    msh: mesh
+        a mesh object
     """
     for inode in msh.nodes:
         inode.velocity=inode.momentum/inode.mass
             
 def nodal_momentum(msh):
     """
-    calculate nodal momentum
+    Calculate nodal momentum
+    
+    Arguments
+    ---------
+    msh: mesh
+        a mesh object
     """
     for inode in msh.nodes:
         inode.momentum=0
@@ -71,7 +88,14 @@ def nodal_momentum(msh):
               
 def particle_strain_increment(msh,dt):
     """
-    calculate particle strain increment
+    Calculate particle strain increment
+
+    Arguments
+    ---------
+    msh: mesh
+        a mesh object
+    dt: float
+        time step
     """
     for ip in msh.particles:
    
@@ -87,7 +111,15 @@ def particle_strain_increment(msh,dt):
         
 def particle_density(msh,dt):
     """
-    update particle density
+    Update particle density
+
+    Arguments
+    ---------
+    msh: mesh
+        a mesh object
+    dt: float
+        time step
+
     """
     for ip in msh.particles:
    
@@ -95,7 +127,14 @@ def particle_density(msh,dt):
         
 def particle_stress(msh,dt):
     """
-    update particle stress
+    Update particle stress
+
+    Arguments
+    ---------
+    msh: mesh
+        a mesh object
+    dt: float
+        time step
     """
     for ip in msh.particles:
 
@@ -103,7 +142,12 @@ def particle_stress(msh,dt):
         
 def interpolation_functions_values(msh):    
     """
-    update the values of the nodal interpolation functions and its gradients
+    Update the values of the nodal interpolation functions and its gradients
+
+    Arguments
+    ---------
+    msh: mesh
+        a mesh object
     """
     for ip in msh.particles:
         
@@ -120,7 +164,12 @@ def interpolation_functions_values(msh):
         
 def  reset_nodal_vaues(msh):
     """
-    reset all nodal values for the next step calculation
+    Reset all nodal values for the next step calculation
+
+    Arguments
+    ---------
+    msh: mesh
+        a mesh object
     """
     for inode in msh.nodes:
         inode.velocity = 0

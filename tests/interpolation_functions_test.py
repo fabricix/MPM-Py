@@ -14,6 +14,10 @@ This examples tests the linear interpolation functions and its derivative.
 
 """
 
+# include the modules' path to the current path
+import sys
+sys.path.append("..") 
+
 # local modules
 from modules import mesh # for mesh generation
 from modules import interpolation # for interpolation

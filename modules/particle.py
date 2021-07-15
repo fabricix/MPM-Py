@@ -1,22 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
 """
-Purpose
--------
-Defines classes for material point representation
 
-Data
-----
-Created on Mon Mar 15 15:22:44 2021
+Represents a material point
 
-Author
-------
-Fabricio Fernandez (<fabricio.hmf@gmail.com>)
 """
 
 class material_point:
     """
-    Class to represents a material point.
+    Represent a material point.
 
     Attributes
     ----------
