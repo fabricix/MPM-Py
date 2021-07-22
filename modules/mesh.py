@@ -152,6 +152,8 @@ class mesh_1D:
         x = ie.n1.x
         y = -0.04
         plt.annotate("n = node\np = material point\ne = element", xy=(x,y),fontsize=13)
+        plt.xlabel(r"Node position, $x_I$")
+        plt.title("Mesh and Material Points")
         plt.show()
     
     def print_mesh_info(self):

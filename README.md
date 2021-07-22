@@ -15,6 +15,7 @@ To create the documentation, install pdoc:
 ```bash
 pip3 install pdoc3
 ```
+
 And then run
 
 ```bash
@@ -42,30 +43,39 @@ Run this example as:
 ```bash
 python mesh-test.py
 ```
+![Alt text](tests/mesh_test.png?raw=true "Continuum bar vibration problem")
 
 ### Interpolation function test
 
 The file `tests/interpolation_functions_test.py` shows the interpolation functions and its derivates over an one 1D element.
 
 Run this example as:
+
 ```bash
 python interpolation-functions-test.py
 ```
+![Alt text](tests/interpolation_functions_test.png?raw=true "Continuum bar vibration problem")
+
 
 ### Single mass vibration problem
 
 In this verification problem a single mass vibration is analyzed numerically and then the numerical solution is compared with the analytical one.
 
 Run this example as:
+
 ```bash
 python mpm-single-mass-bar-vibration.py
 ```
+![Alt text](verification_problems/mpm_single_mass_vibration.png?raw=true "Single mass vibration problem")
 
 ### Continuum bar vibration problem
 
 In this verification problem a continuum bar vibration is analyzed numerically and then the numerical solution is compared with the analytical one.
 
 Run this example as:
+
 ```bash
 python mpm-continuum-bar-vibration.py
 ```
+
+![Alt text](verification_problems/mpm_continuum_bar_vibration.png?raw=true "Continuum bar vibration problem")

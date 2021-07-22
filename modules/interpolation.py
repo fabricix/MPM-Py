@@ -94,7 +94,10 @@ def test(x1,x2,xI,L):
 	plt.plot(x,ni,'-r',label=r'$N_I$')
 	plt.plot(x,dni,'-b',label=r'$dN_I/dx$')
 	plt.plot(x,np.zeros_like(x),'--k')
+	plt.title("Interpolation funtions and its derivates")
 	plt.legend()
+	plt.ylabel(r"$N_I$, $dN_I/dx$")
+	plt.xlabel(r"x")
 	plt.show()
 	
 def mass_to_nodes(msh):
