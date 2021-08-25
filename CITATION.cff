@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Fernández"
+  given-names: "Fabricio"
+  orcid: "https://orcid.org/0000-0001-7523-5961"
+title: "MPM-Py: A program for learning the Material Point Method using Python"
+version: 1.1.0
+doi: 
+date-released:
+url: "https://github.com/fabricix/MPM-Py"
