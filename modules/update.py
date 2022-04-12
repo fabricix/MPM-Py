@@ -7,6 +7,7 @@ This file defines functions for updating tasks
 
 """
 from modules import interpolation as interp
+from modules import shape as shape
 
 def particle_velocity(msh,dt):
     """
@@ -155,12 +156,12 @@ def interpolation_functions_values(msh):
         ie=ip.element
         
         # interpolation functions
-        ip.N1=interp.Ni(ip.position,ie.n1.x,ie.L)
-        ip.N2=interp.Ni(ip.position,ie.n2.x,ie.L)
+        ip.N1=shape.NiLinear(ip.position,ie.n1.x,ie.L)
+        ip.N2=shape.NiLinear(ip.position,ie.n2.x,ie.L)
         
         # interpolation functions gradients
-        ip.dN1=interp.dNi(ip.position,ie.n1.x,ie.L)
-        ip.dN2=interp.dNi(ip.position,ie.n2.x,ie.L)
+        ip.dN1=shape.dNiLinear(ip.position,ie.n1.x,ie.L)
+        ip.dN2=shape.dNiLinear(ip.position,ie.n2.x,ie.L)
         
 def  reset_nodal_vaues(msh):
     """

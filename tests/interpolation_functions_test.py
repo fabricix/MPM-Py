@@ -10,7 +10,7 @@ Fabricio Fernandez (<fabricio.hmf@gmail.com>)
 Purpose
 -------
 
-This examples tests the linear interpolation functions and its derivative.
+This examples tests the interpolation functions and its derivative.
 
 """
 
@@ -20,7 +20,7 @@ sys.path.append("..")
 
 # local modules
 from modules import mesh # for mesh generation
-from modules import interpolation # for interpolation
+from modules import shape as shape# for interpolation
 
 # domain
 L = 2
@@ -35,6 +35,4 @@ msh=mesh.mesh_1D(L,nelem)
 # msh.print_mesh()
 
 # print the interpolation functions and its derivative
-interpolation.test(x1=0,x2=L,xI=L/2,L=L/nelem)
-
-
+shape.test_interpolation_functions(x1=0,x2=L,xI=L/2,L=L/nelem,shape_type='cpGIMP')
