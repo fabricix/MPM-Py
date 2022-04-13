@@ -34,5 +34,8 @@ msh=mesh.mesh_1D(L,nelem)
 #show mesh
 # msh.print_mesh()
 
+#interpolation function type
+interpolation_type = 'linear' #'linear' or 'cpGIMP'
+
 # print the interpolation functions and its derivative
-shape.test_interpolation_functions(x1=0,x2=L,xI=L/2,L=L/nelem,shape_type='cpGIMP')
+shape.test_interpolation_functions(x1=0,x2=L,xI=L/2,L=L/nelem,shape_type=interpolation_type)

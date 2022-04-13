@@ -36,6 +36,8 @@ In the folders `verification_problems` and `tests` there are examples showing an
 
 ### Mesh test
 
+#### All elements with particles
+
 The file `tests/mesh-test.py` tests the mesh generations module by plotting the mesh and showing the number of elements, nodes and material points. 
 
 Run this example as:
@@ -43,19 +45,36 @@ Run this example as:
 ```bash
 python mesh-test.py
 ```
-![Alt text](tests/mesh_test.png?raw=true "Continuum bar vibration problem")
+![Alt text](tests/mesh_test.png?raw=true "All elements with particles")
+
+#### Mesh with particles in some elements
+In this case the particles are distributed in some elements.
+
+Run this example as:
+
+```bash
+mesh_elements_without_particles_test.py
+```
+![Alt text](tests/mesh_elements_without_particles_test.png?raw=true "Elements without particles")
 
 ### Interpolation function test
 
 The file `tests/interpolation_functions_test.py` shows the interpolation functions and its derivates over an one 1D element.
+
+In `test_interpolation_functions` from `shape` module, set `shape_type=linear` for linear interpolation functions or  `shape_type=cpGIMP` for contiguous particle GIMP (generalized interpolation material point).
 
 Run this example as:
 
 ```bash
 python interpolation-functions-test.py
 ```
-![Alt text](tests/interpolation_functions_test.png?raw=true "Continuum bar vibration problem")
+Linear interpolation functions:
 
+![Alt text](tests/linear_interpolation_functions_test.png?raw=true "Linear interpolation functions")
+
+cpGIMP interpolation functions:
+
+![Alt text](tests/cpGIMP_interpolation_functions_test.png?raw=true "Linear interpolation functions")
 
 ### Single mass vibration problem
 
