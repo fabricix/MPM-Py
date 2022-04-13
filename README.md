@@ -61,7 +61,7 @@ mesh_elements_without_particles_test.py
 
 The file `tests/interpolation_functions_test.py` shows the interpolation functions and its derivates over an one 1D element.
 
-In `test_interpolation_functions` from `shape` module, set `shape_type=linear` for linear interpolation functions or  `shape_type=cpGIMP` for contiguous particle GIMP (generalized interpolation material point).
+In `test_interpolation_functions` function of the `shape` module, set `shape_type="linear"` for linear interpolation functions or `shape_type="cpGIMP"` for contiguous particle GIMP (generalized interpolation material point).
 
 Run this example as:
 
