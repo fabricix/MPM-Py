@@ -61,6 +61,9 @@ def explicit_solution(it,dt,time,msh,mpm_scheme,x_plot,y_plot,particle_plot,fiel
 	# main simulation loop
 	while it<=time:
 	    
+	    # update particles list in each element
+	    update.particle_list(msh)
+
 	    # update interpolation functions values
 	    update.interpolation_functions_values(msh)
 	    

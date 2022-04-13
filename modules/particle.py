@@ -38,7 +38,7 @@ class material_point:
     momentum : float
         particle momentum (mass*velocity)
     
-    pid : int
+    id : int
         particle identification
     
     f_ext : float
@@ -70,7 +70,7 @@ class material_point:
         self.stress    = 0    
         self.dstrain   = 0    
         self.momentum  = 0    
-        self.pid = 0          
+        self.id = 0          
         self.f_ext = 0        
         self.element = 0      
         self.N1 = 0           

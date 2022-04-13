@@ -39,7 +39,7 @@ msh = mesh.mesh_1D(L,nelements)
 elastic = material.linear_elastic(E=50,density=1)
 
 # put particles in mesh element and set the material
-msh.put_particles_in_mesh(ppelem=1,material=elastic)
+msh.put_particles_in_all_mesh_elements(ppelem=1,material=elastic)
 
 # simulation time 
 time = 10 # total time

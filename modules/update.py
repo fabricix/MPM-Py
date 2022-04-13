@@ -179,3 +179,42 @@ def  reset_nodal_vaues(msh):
         inode.f_int = 0
         inode.f_ext = 0
         inode.f_tot = 0
+
+def particle_list(msh):
+    """
+    Update particle list in each mesh element.
+
+    Arguments
+    ---------
+    msh: mesh
+        a mesh object
+    """
+
+    # clear particle list in elements
+    for ie in msh.elements:
+        ie.particles = []
+
+    # for each particle in model
+    for ip in msh.particles:
+
+        # get particle position
+        xp = ip.position
+
+        # for each element in mesh
+        for ie in msh.elements:
+
+            # get the nodal position
+            xn1 = ie.n1.x
+            xn2 = ie.n2.x
+
+            # verify the particle is inside the element
+            if xp>=xn1 and xp<xn2:
+
+                # update element in particle
+                ip.element = ie
+
+                # add the particle to the element list
+                ie.particles.append(ip)
+
+                # break element loop for testing other particle
+                break

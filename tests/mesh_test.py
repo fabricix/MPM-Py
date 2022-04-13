@@ -23,10 +23,10 @@ from modules import mesh # for mesh generation
 from modules import material # for material definition
 
 # domain
-L = 4
+L = 10
 
 # elements
-nelem = 2
+nelem = 10
 
 # particles per element
 p_per_elem = 2
@@ -37,8 +37,11 @@ msh = mesh.mesh_1D(L,nelem)
 # define a linear material 
 elastic = material.linear_elastic(E=50,density=1)
  
-# put particles in elements
-msh.put_particles_in_mesh(ppelem=p_per_elem,material=elastic)
+# put particles in all elements
+msh.put_particles_in_all_mesh_elements(ppelem=p_per_elem,material=elastic)
+
+# put particles in some elements, from elem_i to elem_f
+#msh.put_particles_in_mesh_by_elements_id(ppelem=p_per_elem,material=elastic, elem_i=3,elem_f=6)
 
 #show mesh
 msh.print_mesh()

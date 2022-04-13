@@ -47,23 +47,23 @@ class mesh_1D:
             if i==0: 
                 
                 ielem = element.bar_1D()
-                ielem.ide=i 
+                ielem.id=i 
                 
                 ielem.n1=node.node_1D()
-                ielem.n1.nid=len(self.nodes)
+                ielem.n1.id=len(self.nodes)
                 self.nodes.append(ielem.n1)
                 
                 ielem.n2=node.node_1D()
-                ielem.n2.nid=len(self.nodes)
+                ielem.n2.id=len(self.nodes)
                 self.nodes.append(ielem.n2)
                 
             else:
                 ielem = element.bar_1D()
-                ielem.ide=i
+                ielem.id=i
                 ielem.n1=self.elements[i-1].n2
                 
                 ielem.n2=node.node_1D()
-                ielem.n2.nid=len(self.nodes)
+                ielem.n2.id=len(self.nodes)
                 self.nodes.append(ielem.n2)
             
             le = L/nelem
@@ -73,7 +73,7 @@ class mesh_1D:
             
             self.elements.append(ielem)
             
-    def put_particles_in_mesh(self,ppelem,material):
+    def put_particles_in_all_mesh_elements(self,ppelem,material):
         """
         Distributes particles in elements mesh
         
@@ -110,7 +110,7 @@ class mesh_1D:
                     
                 # create particle
                 ip = particle.material_point(pmass,material,xp)
-                ip.pid=len(self.particles)
+                ip.id=len(self.particles)
                 
                 # set the element in the particle
                 ip.element=ie
@@ -121,6 +121,64 @@ class mesh_1D:
                 # append in mesh
                 self.particles.append(ip)
         
+    def put_particles_in_mesh_by_elements_id(self,ppelem,material,elem_i,elem_f):
+        """
+        Distributes particles in elements mesh from xi to xf
+        
+        Arguments
+        ---------
+        ppelem: int
+            number of particles per element
+
+        material: material
+            a material object
+
+        elem_i: int
+            initial element id to distribute particles
+
+        elem_f: int
+            final element id to distribute particles
+
+        """
+        self.ppelem=ppelem
+
+        for ie in range(self.nelem):
+            
+            ie = self.elements[ie]
+            le = ie.L
+            
+            # verify if the element is allow to get particles
+            if ie.id<elem_i or ie.id>elem_f:
+                continue 
+
+            for i in range(ppelem):
+                
+                # particle mass
+                pmass = le*material.density/ppelem
+                
+                # particle position
+                if(len(ie.particles)==0):
+                    xp=ie.n1.x+le/(2*ppelem)
+                    
+                elif(len(ie.particles)==(ppelem-1)):
+                    xp=ie.n2.x-le/(2*ppelem)   
+                
+                else:
+                    xp=ie.n1.x+le/(2*ppelem)+len(ie.particles)*(le/ppelem)
+                    
+                # create particle
+                ip = particle.material_point(pmass,material,xp)
+                ip.id=len(self.particles)
+                
+                # set the element in the particle
+                ip.element=ie
+
+                # append in elements
+                ie.particles.append(ip)                
+                                
+                # append in mesh
+                self.particles.append(ip)
+
     def print_mesh(self,print_labels=True):
         """
         Function for print the mesh in a plot
@@ -139,14 +197,14 @@ class mesh_1D:
             
             if(print_labels):
                 x=(ie.n1.x+ie.n2.x)/2
-                plt.annotate("e%d"%ie.ide, xy=(x,-1.5*dy),fontsize=13)
-                plt.annotate("n%d"%ie.n1.nid, xy=(ie.n1.x,dy),fontsize=13)
-                plt.annotate("n%d"%ie.n2.nid, xy=(ie.n2.x,dy),fontsize=13)
+                plt.annotate("e%d"%ie.id, xy=(x,-1.5*dy),fontsize=13)
+                plt.annotate("n%d"%ie.n1.id, xy=(ie.n1.x,dy),fontsize=13)
+                plt.annotate("n%d"%ie.n2.id, xy=(ie.n2.x,dy),fontsize=13)
             
             for ip in ie.particles:
                 plt.plot(ip.position,0,'ob')
                 if(print_labels):
-                    plt.annotate("p%d"%ip.pid, xy=(ip.position,dy),fontsize=13)
+                    plt.annotate("p%d"%ip.id, xy=(ip.position,dy),fontsize=13)
                     
         ie = self.elements[0]
         x = ie.n1.x
@@ -170,11 +228,11 @@ class mesh_1D:
             
             print('element')
             print('id\tn1\txn1\tn2\txn2')
-            print('%d\t%d\t%.2f\t%d\t%.2f'%(ie.ide,ie.n1.nid,ie.n1.x,ie.n2.nid,ie.n2.x))
+            print('%d\t%d\t%.2f\t%d\t%.2f'%(ie.id,ie.n1.id,ie.n1.x,ie.n2.id,ie.n2.x))
             
             print('particles')
             print('id\txp')
             for ip in ie.particles:    
-                print('%d\t%.2f'%(ip.pid,ip.position))
+                print('%d\t%.2f'%(ip.id,ip.position))
                 
             print(20*'--')

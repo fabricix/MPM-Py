@@ -13,7 +13,7 @@ class node_1D:
     
     Attributes
     ---------
-    nid : int
+    id : int
         node identification
 
     x : float
@@ -39,7 +39,7 @@ class node_1D:
     """
     def __init__(self):
         
-        self.nid = 0
+        self.id = 0
         self.x = 0  
         self.velocity = 0  
         self.mass = 0  
