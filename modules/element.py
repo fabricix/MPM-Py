@@ -31,6 +31,7 @@ class bar_1D:
 	"""
 
 	def __init__(self):
+		
 		self.eid = 0 # element id 
 		self.n1 = 0  # node 1 (left)
 		self.n2 = 0  # node 2 (right)

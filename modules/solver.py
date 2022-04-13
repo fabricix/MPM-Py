@@ -54,6 +54,9 @@ def explicit_solution(it,dt,time,msh,mpm_scheme,x_plot,y_plot,particle_plot,fiel
     field_plot: string
     	Field to be plotted ("velocity" or "position")
     """  
+    
+    # loop couter
+	loop_counter = 1
 	
 	# main simulation loop
 	while it<=time:
@@ -98,10 +101,10 @@ def explicit_solution(it,dt,time,msh,mpm_scheme,x_plot,y_plot,particle_plot,fiel
 	    msh.elements[0].n1.f_tot=0
 
 	    # integrate the grid nodal momentum equation
-	    integra.momentum_in_nodes(msh,dt)
+	    integra.momentum_in_nodes(msh, dt/2.0 if loop_counter==1 else dt)
 	 
 	    # update particle velocity
-	    update.particle_velocity(msh,dt)
+	    update.particle_velocity(msh,dt/2.0 if loop_counter==1 else dt)
 	    
 	    # update particle position
 	    update.particle_position(msh,dt)
@@ -143,5 +146,8 @@ def explicit_solution(it,dt,time,msh,mpm_scheme,x_plot,y_plot,particle_plot,fiel
 	    elif field_plot=='position':
 	    	y_plot.append(msh.particles[particle_plot].position)
 	    
+	    # update loop counter
+	    loop_counter+=1
+
 	    # advance in time
 	    it+=dt

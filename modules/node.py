@@ -38,6 +38,7 @@ class node_1D:
         total force
     """
     def __init__(self):
+        
         self.nid = 0
         self.x = 0  
         self.velocity = 0  
