@@ -53,7 +53,7 @@ In this case the particles are distributed in some elements.
 Run this example as:
 
 ```bash
-mesh_elements_without_particles_test.py
+python mesh_elements_without_particles_test.py
 ```
 ![Alt text](tests/mesh_elements_without_particles_test.png?raw=true "Elements without particles")
 
