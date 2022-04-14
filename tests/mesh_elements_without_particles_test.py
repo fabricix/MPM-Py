@@ -26,10 +26,10 @@ from modules import material # for material definition
 L = 5
 
 # elements
-nelem = 10
+nelem = 6
 
 # particles per element
-p_per_elem = 2
+p_per_elem = 1
 
 # create an 1D mesh
 msh = mesh.mesh_1D(L,nelem)
