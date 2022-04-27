@@ -122,4 +122,4 @@ msetup = setup.model_setup()
 msetup.damping_local_alpha=0.1
 ```
 
-![Alt text](tests/damped_continuum_bar_vibration?raw=true "Damped continuum bar vibration")
+![Alt text](tests/damped_continuum_bar_vibration.png?raw=true "Damped continuum bar vibration")
