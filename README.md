@@ -99,8 +99,7 @@ python mpm-continuum-bar-vibration.py
 
 ![Alt text](verification_problems/mpm_continuum_bar_vibration.png?raw=true "Continuum bar vibration problem")
 
-
-### Wave traveling in a pile 
+### Wave traveling in a pile
 
 In this verification problem a wave traveling in a pile is analyzed numerically and then the numerical solution is compared with the analytical one.
 
@@ -111,3 +110,16 @@ python mpm_wave_in_pile.py
 ```
 
 ![Alt text](verification_problems/mpm_wave_in_pile.png?raw=true "Wave in pile vibration problem")
+
+### Local damping
+
+The local damping is a nodal force proportional to the unbalanced nodal total force, acting in opposite nodal velocity direction.
+
+The local damping must be setting up using the `model_setup` class. For example:
+
+```bash
+msetup = setup.model_setup()
+msetup.damping_local_alpha=0.1
+```
+
+![Alt text](tests/damped_continuum_bar_vibration?raw=true "Damped continuum bar vibration")

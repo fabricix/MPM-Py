@@ -46,10 +46,11 @@ msh.put_particles_in_all_mesh_elements(ppelem=1,material=elastic)
 msetup = setup.model_setup()
 msetup.interpolation_type="linear"
 msetup.integration_scheme="MUSL"
-msetup.time=10
+msetup.time=2
 msetup.dt=0.001
 msetup.solution_particle=-1
 msetup.solution_field="position"
+msetup.damping_local_alpha=0.0
 
 # verify time step
 dt_critical=msh.elements[0].L/(elastic.E/elastic.density)**0.5

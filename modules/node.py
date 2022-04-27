@@ -36,6 +36,9 @@ class node_1D:
         
     f_tot  : float
         total force
+
+    f_damp  : float
+        damping force
     """
     def __init__(self):
         
@@ -47,3 +50,4 @@ class node_1D:
         self.f_int = 0
         self.f_ext = 0
         self.f_tot = 0
+        self.f_damp = 0

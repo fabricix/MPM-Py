@@ -82,7 +82,7 @@ def explicit_solution(msh,msetup):
 	    interpola.external_force_to_nodes(msh)
 
 	    # calculate total force in node
-	    integra.total_force_in_nodes(msh)    
+	    integra.total_force_in_nodes(msh, msetup)    
 	    
 	    # impose essential boundary conditions (in fixed nodes set f=m*a=0)
 	    msh.elements[0].n1.f_tot=0

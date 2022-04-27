@@ -33,6 +33,9 @@ class model_setup:
 
     solution_array : array
         array to store the solution in terms of time and field
+
+    damping_local_alpha : float
+        local damping factor proportional to the total nodal force
         
     """
     def __init__(self):
@@ -44,3 +47,4 @@ class model_setup:
         self.solution_particle=0
         self.solution_field="position"
         self.solution_array=[[],[]]
+        self.damping_local_alpha=0

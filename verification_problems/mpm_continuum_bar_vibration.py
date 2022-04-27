@@ -51,6 +51,7 @@ msetup.time=60
 msetup.dt=0.1
 msetup.solution_particle=-1
 msetup.solution_field='velocity'
+msetup.damping_local_alpha=0.0
 
 # verify time step
 dt_critical=msh.elements[0].L/(elastic.E/elastic.density)**0.5
