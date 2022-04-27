@@ -21,45 +21,29 @@ from modules import interpolation as interpola # for interpolation tasks
 from modules import integration as integra # for integration tasks
 from modules import update # for updating tasks
 
-def explicit_solution(it,dt,time,msh,mpm_scheme,x_plot,y_plot,particle_plot,field_plot):
+def explicit_solution(msh,msetup):
 	"""
     Calculate the explicit solution of the motion equation using the MPM
     
     Arguments
     ---------
-    it: float
-        Initial time
-
-    dt: float
-        Time step
-
-    time: float
-        total simulation time
 
     msh: mesh
         a mesh object
 
-    mpm_scheme: string
-    	Update stress scheme ("USL", "MUSL" or "USF")
+    msetup : model_setup
+    	a model_setup object containing the model options
 
-    x_plot: list
-    	List to add the x variable of a result plot
-
-    y_plot: list
-    	List to add the y variable of a result plot
-
-    particle_plot: int
-    	Index of the particle to be plot the results
-
-    field_plot: string
-    	Field to be plotted ("velocity" or "position")
     """  
     
     # loop couter
 	loop_counter = 1
 	
+	# current loop time
+	it = 0
+
 	# main simulation loop
-	while it<=time:
+	while it<=msetup.time:
 	    
 	    # update particles list in each element
 	    update.particle_list(msh)
@@ -77,19 +61,19 @@ def explicit_solution(it,dt,time,msh,mpm_scheme,x_plot,y_plot,particle_plot,fiel
 	    msh.elements[0].n1.momentum=0  
 	    
 	    # Update Stress First Scheme
-	    if mpm_scheme=='USF':
+	    if msetup.integration_scheme=='USF':
 
 	        # calculate the grid nodal velocity
 	        update.nodal_velocity(msh)
 	    
 	        # calculate particle strain increment
-	        update.particle_strain_increment(msh,dt)
+	        update.particle_strain_increment(msh,msetup.dt)
 	        
 	        # update particle density
-	        update.particle_density(msh,dt)
+	        update.particle_density(msh,msetup.dt)
 	    
 	        # update particle stress
-	        update.particle_stress(msh,dt)
+	        update.particle_stress(msh,msetup.dt)
 	        
 	    # particle internal force to nodes
 	    interpola.internal_force_to_nodes(msh)
@@ -104,16 +88,16 @@ def explicit_solution(it,dt,time,msh,mpm_scheme,x_plot,y_plot,particle_plot,fiel
 	    msh.elements[0].n1.f_tot=0
 
 	    # integrate the grid nodal momentum equation
-	    integra.momentum_in_nodes(msh, dt/2.0 if loop_counter==1 else dt)
+	    integra.momentum_in_nodes(msh, msetup.dt/2.0 if loop_counter==1 else msetup.dt)
 	 
 	    # update particle velocity
-	    update.particle_velocity(msh,dt/2.0 if loop_counter==1 else dt)
+	    update.particle_velocity(msh,msetup.dt/2.0 if loop_counter==1 else msetup.dt)
 	    
 	    # update particle position
-	    update.particle_position(msh,dt)
+	    update.particle_position(msh,msetup.dt)
 
 	    # Modified Update Stress Last Scheme
-	    if(mpm_scheme=='MUSL'):
+	    if(msetup.integration_scheme=='MUSL'):
 	        
 	        # recalculate the grid nodal momentum
 	        update.nodal_momentum(msh)
@@ -123,34 +107,34 @@ def explicit_solution(it,dt,time,msh,mpm_scheme,x_plot,y_plot,particle_plot,fiel
 	        msh.elements[0].n1.momentum=0
 	    
 	    # Modified Update Stress Last or Update Stress Last Scheme
-	    if(mpm_scheme=='MUSL' or mpm_scheme=='USL'):
+	    if(msetup.integration_scheme=='MUSL' or msetup.integration_scheme=='USL'):
 	        
 	        # calculate the grid nodal velocity
 	        update.nodal_velocity(msh)
 	    
 	        # calculate particle strain increment
-	        update.particle_strain_increment(msh,dt)
+	        update.particle_strain_increment(msh,msetup.dt)
 
 	        # update particle density
-	        update.particle_density(msh,dt)
+	        update.particle_density(msh,msetup.dt)
 	    
 	        # update particle stress
-	        update.particle_stress(msh,dt)
+	        update.particle_stress(msh,msetup.dt)
 	    
 	    # reset all nodal values
 	    update.reset_nodal_vaues(msh)
 
 	    # store data for plot
-	    x_plot.append(it)
+	    msetup.solution_array[0].append(it)
 	    
-	    if field_plot=='velocity':
-	    	y_plot.append(msh.particles[particle_plot].velocity)
+	    if msetup.solution_field=='velocity':
+	    	msetup.solution_array[1].append(msh.particles[msetup.solution_particle].velocity)
 	    
-	    elif field_plot=='position':
-	    	y_plot.append(msh.particles[particle_plot].position)
+	    elif msetup.solution_field=='position':
+	    	msetup.solution_array[1].append(msh.particles[msetup.solution_particle].position)
 	    
 	    # update loop counter
 	    loop_counter+=1
 
 	    # advance in time
-	    it+=dt
+	    it+=msetup.dt
