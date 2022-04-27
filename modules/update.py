@@ -67,7 +67,8 @@ def nodal_velocity(msh):
         a mesh object
     """
     for inode in msh.nodes:
-        inode.velocity=inode.momentum/inode.mass
+        if(inode.mass!=0):
+            inode.velocity=inode.momentum/inode.mass
             
 def nodal_momentum(msh):
     """

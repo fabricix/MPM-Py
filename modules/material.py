@@ -67,4 +67,4 @@ class newtonian_fluid:
             a particle object
         """
         
-        particle.stress=self.mu*particle.strain/dt
+        particle.stress=self.mu*particle.dstrain/dt
