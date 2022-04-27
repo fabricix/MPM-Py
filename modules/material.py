@@ -22,3 +22,49 @@ class linear_elastic:
         
         self.E=E # Young's modulus
         self.density=density # density
+
+    def update_stress(self,particle,dt):
+        
+        """
+        Update particle stress using linear elastic constitutive model
+
+        Arguments
+        ---------
+        particle: particle
+            a particle object
+        """
+        
+        particle.stress+=particle.dstrain*self.E
+
+class newtonian_fluid:
+    """ 
+    Represents a Newtonian fluid material
+
+    Arguments
+    ---------
+    
+    mu : float
+        Viscosity
+
+    density : float
+        density
+    
+    """
+
+    def __init__(self,mu,density):
+        
+        self.mu=mu # viscosity
+        self.density=density # density
+
+    def update_stress(self,particle,dt):
+        
+        """
+        Update particle stress
+
+        Arguments
+        ---------
+        particle: particle
+            a particle object
+        """
+        
+        particle.stress=self.mu*particle.strain/dt

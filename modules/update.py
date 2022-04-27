@@ -139,7 +139,7 @@ def particle_stress(msh,dt):
     """
     for ip in msh.particles:
 
-        ip.stress += ip.dstrain*ip.material.E
+        ip.material.update_stress(ip,dt)
         
 def interpolation_functions_values(msh):    
     """

@@ -46,7 +46,7 @@ msh.put_particles_in_all_mesh_elements(ppelem=1,material=elastic)
 msetup = setup.model_setup()
 msetup.interpolation_type="linear"
 msetup.integration_scheme="MUSL"
-msetup.time=2
+msetup.time=10
 msetup.dt=0.001
 msetup.solution_particle=-1
 msetup.solution_field="position"
