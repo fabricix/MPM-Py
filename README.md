@@ -24,6 +24,11 @@ pdoc --html -c latex_math=True modules/
 
 To read the documentation, open the file `/html/modules/index.html` using a web browser.
 
+Note that in Windows the module flag  `-m` must be used to correctly use `pdoc`:
+
+```bash
+python -m pdoc --html -c latex_math=True modules/
+```
 ## Requirements
 
 * Python 3.7.4 or superior
