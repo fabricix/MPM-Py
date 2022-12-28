@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 
-Class for problem configuration
+This module defines a class representing the configuration of the problem
 
 """
 

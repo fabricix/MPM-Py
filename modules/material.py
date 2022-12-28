@@ -3,7 +3,7 @@
 
 """
 
-Represents a linear elastic material
+This module defines classes representing materials
 
 """
 

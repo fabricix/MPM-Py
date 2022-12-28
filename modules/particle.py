@@ -3,7 +3,7 @@
 
 """
 
-Represents a material point
+This module defines classes representing a material point (or particle)
 
 """
 

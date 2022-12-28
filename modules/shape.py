@@ -1,17 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-r"""
+"""
 
-Defines shape functions of nodes.
-
-There are two options: linear and cpGIMP shape functions.
+This module defines nodal shape functions and its derivative
 
 """
 
 def NiLinear(x,xI,L):
 	"""
-	Calculate the values of the interpolation function
+	Calculates the values of the linear interpolation function
 
 	Arguments
 	---------
@@ -34,7 +32,7 @@ def NiLinear(x,xI,L):
 
 def dNiLinear(x,xI,L):
 	"""
-	Calculate the values of the interpolation function gradient.
+	Calculates the values of the linear interpolation function gradient
 	
 	Arguments
 	---------
@@ -71,7 +69,7 @@ def sgn(a):
 
 def NicpGIMP(L,lp,xp,xi):
 	"""
-	Contiguous particle GIMP Shape function 
+	Calculates contiguous GIMP shape function value
 	
 	Arguments
 	---------
@@ -108,9 +106,8 @@ def NicpGIMP(L,lp,xp,xi):
 		return 0
 
 def dNicpGIMP(L,lp,xp,xi):
-	
 	"""
-	Derivate of the contiguous particle GIMP shape function 
+	Calculates the gradient of the contiguous particle GIMP shape functions 
 	
 	Arguments
 	---------
@@ -148,8 +145,7 @@ def dNicpGIMP(L,lp,xp,xi):
 
 def test_interpolation_functions(x1,x2,xI,L,shape_type):
 	"""
-	Function to test the interpolation functions Ni and its gradients
-	dNi.
+	Tests the interpolation functions Ni and its gradients dNi
 
 	Arguments
 	---------
@@ -187,7 +183,7 @@ def test_interpolation_functions(x1,x2,xI,L,shape_type):
 	plt.plot(x,ni,'-r',label=r'$N_I$')
 	plt.plot(x,dni,'-b',label=r'$dN_I/dx$')
 	plt.plot(x,np.zeros_like(x),'--k')
-	plt.title("Interpolation functions and its derivates")
+	plt.title("Interpolation functions and its derivatives")
 	plt.legend()
 	plt.ylabel(r"$N_I$, $dN_I/dx$")
 	plt.xlabel(r"x")

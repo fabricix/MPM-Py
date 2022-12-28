@@ -3,7 +3,7 @@
 
 """
 
-Represent a finite element
+This module contents finite element classes definitions to create finite element objects
 
 """
 class bar_1D:

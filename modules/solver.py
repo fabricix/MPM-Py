@@ -3,7 +3,7 @@
 
 r"""
 
-Perform the explicit solution in time of the motion equation:
+This module solves the motion equation explicitly in time
 
 .. math::
 	\frac{\partial \sigma_{ij}}{\partial x_j} + \rho b_i = \rho \ddot{u}_i
@@ -23,7 +23,7 @@ from modules import update # for updating tasks
 
 def explicit_solution(msh,msetup):
 	"""
-    Calculate the explicit solution of the motion equation using the MPM
+    Calculates the explicit solution of the motion equation using the MPM
     
     Arguments
     ---------

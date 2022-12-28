@@ -3,7 +3,7 @@
 
 """
 
-This file defines functions for updating tasks
+This module defines functions for updating tasks
 
 """
 from modules import interpolation as interp

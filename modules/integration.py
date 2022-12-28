@@ -3,8 +3,7 @@
 
 """
 
-Defines nodal integration functions. 
-This functions in general have the objective to advance in time, or adding quantities at the nodes.
+This module defines integration nodal functions
 
 """
 

@@ -3,7 +3,7 @@
 
 """
 
-Represents a node in a finite element mesh
+This module defines classes representing a node in a finite element mesh
 
 """
 

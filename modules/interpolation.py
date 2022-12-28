@@ -3,9 +3,9 @@
 
 r"""
 
-Defines interpolation functions in order to transfer quantities from particles to nodes.
+This module defines interpolation functions to transfer quantities from particles to nodes
 
-This functions, have the general form:
+These functions have the general form:
 
 .. math::
 	f_I = \sum_p N_I(x_p) f_p
