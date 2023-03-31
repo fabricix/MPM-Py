@@ -77,24 +77,24 @@ for i in range(len(density_serie)):
     # solve the problem in time
     solver.explicit_solution(msh,msetup)
     
-    # plot mpm solution
-    plt.plot(msetup.solution_array[0],msetup.solution_array[1],color=color_list[i],label='mpm, density='+'{:.2f}'.format(density_serie[i]))
-    
-    # plot the analytical solution
-    from analitical_solutions import analitical_solution_single_mass_vibration as smpv
-    [anal_xt, anal_t] = smpv.single_mass_point_vibration_solution(L,elastic.E,elastic.density,msetup.time,msetup.dt,L/2,vo)
-    
     n_values = 100
-    indices = np.linspace(0, len(anal_xt)-1, n_values, dtype=int)
+    indices = np.linspace(0, len(msetup.solution_array[0])-1, n_values, dtype=int)
     
     y_subset = []
     x_subset = []
     
     for i_index in range(len(indices)): 
-        y_subset.append(anal_xt[indices[i_index]])
-        x_subset.append(anal_t[indices[i_index]])
-
-    plt.plot(x_subset,y_subset,' ',color=color_list[i],marker='s',markersize=5,markerfacecolor='none',label='analytical')
+        x_subset.append(msetup.solution_array[0][indices[i_index]])
+        y_subset.append(msetup.solution_array[1][indices[i_index]])
+        
+    # plot mpm solution
+    plt.plot(x_subset,y_subset,' ',color=color_list[i],marker='s',markerfacecolor='none',label='mpm, density='+'{:.2f}'.format(density_serie[i]))
+    
+    # plot the analytical solution
+    from analitical_solutions import analitical_solution_single_mass_vibration as smpv
+    [anal_xt, anal_t] = smpv.single_mass_point_vibration_solution(L,elastic.E,elastic.density,msetup.time,msetup.dt,L/2,vo)
+    
+    plt.plot(anal_t,anal_xt,'-',color=color_list[i],label='analytical')
 
 # configure axis, legends and show plot
 plt.xlabel('time (s)')
