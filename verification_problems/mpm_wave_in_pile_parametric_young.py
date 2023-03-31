@@ -90,14 +90,14 @@ for i in range(len(young_serie)):
         y_subset.append(msetup.solution_array[1][indices[i_index]])
         
     # plot mpm solution
-    plt.plot(x_subset,y_subset,linestyle='solid',linewidth=1,color=color_list[i],marker='o',markersize=3,markerfacecolor='none',label='mpm, Young='+'{:.1f}e6'.format(young_serie[i]/1e6))
+    plt.plot(x_subset,y_subset,linestyle='solid',linewidth=1,color=color_list[i],marker='o',markersize=3,markerfacecolor='none',label='Young='+'{:.1f}e6-MPM'.format(young_serie[i]/1e6))
     
     # plot the analytical solution
     [anal_xt,anal_vt, anal_t] = wip.wave_in_pile_fixed_and_loaded(L=L,E=young_serie[i],rho=elastic.density,time=msetup.time,dt=msetup.dt/2,po=po,x=pos_initial)
-    plt.plot(anal_t,anal_xt,color=color_list[i],linewidth=1,label='analytical')
+    plt.plot(anal_t,anal_xt,color=color_list[i],linewidth=1,label='Young='+'{:.1f}e6-Analytical'.format(young_serie[i]/1e6))
 
 # configure axis, legends and show plot
-plt.gca().set_xlabel('time (s)')
-plt.gca().set_ylabel('position (m)')
+plt.gca().set_xlabel('Time (s)')
+plt.gca().set_ylabel('Position (m)')
 plt.legend(loc='center left', bbox_to_anchor=(1.0, 0.5))
 plt.show()

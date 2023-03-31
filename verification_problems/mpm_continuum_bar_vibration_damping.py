@@ -71,15 +71,15 @@ for i in range(len(damping_serie)):
   solver.explicit_solution(msh,msetup)
       
   # plot mpm solution
-  plt.plot(msetup.solution_array[0],msetup.solution_array[1],label=str('mpm, damping='+'{:.2f}'.format(damping_serie[i])))
+  plt.plot(msetup.solution_array[0],msetup.solution_array[1],label=str('Damping={:.2f}-MPM'.format(damping_serie[i])))
 
 # plot the analytical solution
 from analitical_solutions import analitical_solution_continuum_bar_vibration as cbv
 [anal_xt,anal_vt, anal_t] = cbv.continuum_bar_vibration_solution(L,elastic.E,elastic.density,msetup.time,msetup.dt,vo,msh.particles[msetup.solution_particle].position)
-plt.plot(anal_t,anal_vt,'r',linewidth=1.5,label='analytical-undamped')
+plt.plot(anal_t,anal_vt,'k',linewidth=1.5,label='Damping={:.2f}-Analytical'.format(0))
 
 # configure axis, legends and show plot
-plt.xlabel('time (s)')
-plt.ylabel('velocity (m/s)')
+plt.xlabel('Time (s)')
+plt.ylabel('Velocity (m/s)')
 plt.legend(loc='center left', bbox_to_anchor=(1.0, 0.5))
 plt.show()

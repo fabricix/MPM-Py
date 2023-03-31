@@ -88,16 +88,16 @@ for i in range(len(density_serie)):
         y_subset.append(msetup.solution_array[1][indices[i_index]])
         
     # plot mpm solution
-    plt.plot(x_subset,y_subset,' ',color=color_list[i],marker='s',markerfacecolor='none',label='mpm, density='+'{:.2f}'.format(density_serie[i]))
+    plt.plot(x_subset,y_subset,' ',color=color_list[i],marker='s',markerfacecolor='none',label='Density={:.2f}-MPM'.format(density_serie[i]))
     
     # plot the analytical solution
     from analitical_solutions import analitical_solution_single_mass_vibration as smpv
     [anal_xt, anal_t] = smpv.single_mass_point_vibration_solution(L,elastic.E,elastic.density,msetup.time,msetup.dt,L/2,vo)
     
-    plt.plot(anal_t,anal_xt,'-',color=color_list[i],label='analytical')
+    plt.plot(anal_t,anal_xt,'-',color=color_list[i],label='Density={:.2f}-Analytical'.format(density_serie[i]))
 
 # configure axis, legends and show plot
-plt.xlabel('time (s)')
-plt.ylabel('displacement (m)')
+plt.xlabel('Time (s)')
+plt.ylabel('Position (m)')
 plt.legend(loc='center left', bbox_to_anchor=(1.0, 0.5))
 plt.show()
