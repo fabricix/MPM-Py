@@ -142,9 +142,6 @@ The local damping must be setting up using the `model_setup` class. For example:
 msetup = setup.model_setup()
 msetup.damping_local_alpha=0.1
 ```
-
-![Alt text](tests/damped_continuum_bar_vibration.png?raw=true "Damped continuum bar vibration")
-
 ## Parametric analysis over damping factor
 
 ```bash
