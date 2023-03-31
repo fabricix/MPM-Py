@@ -92,6 +92,14 @@ python mpm-single-mass-bar-vibration.py
 ```
 ![Alt text](verification_problems/mpm_single_mass_vibration.png?raw=true "Single mass vibration problem")
 
+## Parametric analysis over material density
+
+```bash
+python mpm-single-mass-bar-vibration_parametric_density.py
+```
+![Alt text](verification_problems/mpm_single_mass_vibration_parametric_density.png?raw=true "Single mass vibration problem: Parametric analysis over density")
+
+
 ### Continuum bar vibration problem
 
 In this verification problem a continuum bar vibration is analyzed numerically and then the numerical solution is compared with the analytical one.
@@ -116,6 +124,14 @@ python mpm_wave_in_pile.py
 
 ![Alt text](verification_problems/mpm_wave_in_pile.png?raw=true "Wave in pile vibration problem")
 
+## Parametric analysis over Young modulus
+
+```bash
+python mpm_wave_in_pile_parametric_young.py
+```
+
+![Alt text](verification_problems/mpm_wave_in_pile_parametric_young.png?raw=true "Wave in pile vibration problem with parametric analysis over Young modulus")
+
 ### Local damping
 
 The local damping is a nodal force proportional to the unbalanced nodal total force, acting in opposite nodal velocity direction.
@@ -128,3 +144,11 @@ msetup.damping_local_alpha=0.1
 ```
 
 ![Alt text](tests/damped_continuum_bar_vibration.png?raw=true "Damped continuum bar vibration")
+
+## Parametric analysis over damping factor
+
+```bash
+python mpm-continuum-bar-vibration_damping.py
+```
+
+![Alt text](verification_problems/mpm_continuum_bar_vibration_damping.png?raw=true "Continuum bar vibration problem with parametric analysis over damping factor")
