@@ -65,17 +65,29 @@ for ip in msh.particles:
 
 # solve the problem in time
 solver.explicit_solution(msh,msetup)
+
+# subset for numerical solution
+n_values = 250
+indices = np.linspace(0, len(msetup.solution_array[0])-1, n_values, dtype=int)
+
+y_subset = []
+x_subset = []
+
+for i_index in range(len(indices)): 
+    x_subset.append(msetup.solution_array[0][indices[i_index]])
+    y_subset.append(msetup.solution_array[1][indices[i_index]])
     
 # plot mpm solution
-plt.plot(msetup.solution_array[0],msetup.solution_array[1],'ob',markersize=2,label='mpm')
+plt.plot(x_subset,y_subset,' ',color='r',marker='s',markerfacecolor='none',label='MPM')
+
 
 # plot the analytical solution
 from analitical_solutions import analitical_solution_continuum_bar_vibration as cbv
 [anal_xt,anal_vt, anal_t] = cbv.continuum_bar_vibration_solution(L,elastic.E,elastic.density,msetup.time,msetup.dt,vo,msh.particles[msetup.solution_particle].position)
-plt.plot(anal_t,anal_vt,'r',linewidth=2,label='analytical')
+plt.plot(anal_t,anal_vt,'b',linewidth=2,label='Analytical')
 
 # configure axis, legends and show plot
-plt.xlabel('time (s)')
-plt.ylabel('velocity (m/s)')
-plt.legend()
+plt.xlabel('Time (s)')
+plt.ylabel('Velocity (m/s)')
+plt.legend(loc='center left', bbox_to_anchor=(1.0, 0.5))
 plt.show()

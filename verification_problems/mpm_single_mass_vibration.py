@@ -20,6 +20,7 @@ sys.path.append("..")
 
 # external modules
 import matplotlib.pyplot as plt # for plot
+import numpy as np
 
 # local modules
 from modules import mesh # for mesh definition
@@ -63,16 +64,27 @@ msh.particles[-1].velocity=vo
 # solve the problem in time
 solver.explicit_solution(msh,msetup)
 
+n_values = 400
+indices = np.linspace(0, len(msetup.solution_array[0])-1, n_values, dtype=int)
+
+y_subset = []
+x_subset = []
+
+for i_index in range(len(indices)): 
+    x_subset.append(msetup.solution_array[0][indices[i_index]])
+    y_subset.append(msetup.solution_array[1][indices[i_index]])
+    
 # plot mpm solution
-plt.plot(msetup.solution_array[0],msetup.solution_array[1],'ob',markersize=2,label='mpm')
+plt.plot(x_subset,y_subset,' ',color='r',marker='s',markerfacecolor='none',label='MPM')
 
 # plot the analytical solution
 from analitical_solutions import analitical_solution_single_mass_vibration as smpv
 [anal_xt, anal_t] = smpv.single_mass_point_vibration_solution(L,elastic.E,elastic.density,msetup.time,msetup.dt,L/2,vo)
-plt.plot(anal_t,anal_xt,'r',linewidth=2,label='analytical')
+
+plt.plot(anal_t,anal_xt,'-',color='b',label='Analytical')
 
 # configure axis, legends and show plot
-plt.xlabel('time (s)')
-plt.ylabel('displacement (m)')
-plt.legend()
+plt.xlabel('Time (s)')
+plt.ylabel('Position (m)')
+plt.legend(loc='center left', bbox_to_anchor=(1.0, 0.5))
 plt.show()
