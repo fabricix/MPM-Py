@@ -51,7 +51,8 @@ msetup.time=0.2
 msetup.dt=0.01
 msetup.solution_particle=0
 msetup.solution_field='position'
-
+msetup.damping_local_alpha=0.0
+  
 # verify time step
 dt_critical=msh.elements[0].L/(elastic.E/elastic.density)**0.5
 msetup.dt = msetup.dt if msetup.dt < dt_critical else dt_critical
@@ -72,14 +73,17 @@ solver.explicit_solution(msh,msetup)
 fig,ax = plt.subplots()
 
 # plot mpm solution
-ax.plot(msetup.solution_array[0],msetup.solution_array[1],'b',markersize=2,label='mpm')
+ax.plot(msetup.solution_array[0],msetup.solution_array[1],linestyle='solid',linewidth=1.5,color="blue",marker='o',markersize=0,markerfacecolor='none',label='MPM')
 
 # plot the analytical solution
 [anal_xt,anal_vt, anal_t] = wip.wave_in_pile_fixed_and_loaded(L=L,E=elastic.E,rho=elastic.density,time=msetup.time,dt=msetup.dt/2,po=po,x=pos_initial)
-ax.plot(anal_t,anal_xt,'r',linewidth=2,label='analytical')
+ax.plot(anal_t,anal_xt,'r',linewidth=1.5,label='Analytical solution')
+
+# vertical line for the theorical arrival time
+plt.axvline(x = (L-pos_initial)/(elastic.E/elastic.density)**0.5,linestyle="dashed",color='k',label='Analitical arrival time')
 
 # configure axis, legends and show plot
-ax.set_xlabel('time (s)')
-ax.set_ylabel('position (m)')
+ax.set_xlabel('Time (s)')
+ax.set_ylabel('Position (m)')
 ax.legend()
 plt.show()
