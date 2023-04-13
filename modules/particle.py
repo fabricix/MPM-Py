@@ -58,6 +58,10 @@ class material_point:
     
     dN2 : float
         value of the interpolation function gradient of node 2
+
+    size: float
+        particle size
+
     """
     def __init__(self, mass, material,x):
         
@@ -76,4 +80,5 @@ class material_point:
         self.N1 = 0           
         self.N2 = 0           
         self.dN1 = 0          
-        self.dN1 = 0          
+        self.dN1 = 0
+        self.size = 0          

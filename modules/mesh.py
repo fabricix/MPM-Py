@@ -111,6 +111,7 @@ class mesh_1D:
                 # create particle
                 ip = particle.material_point(pmass,material,xp)
                 ip.id=len(self.particles)
+                ip.size = ie.L/ppelem
                 
                 # set the element in the particle
                 ip.element=ie

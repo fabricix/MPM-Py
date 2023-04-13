@@ -142,7 +142,7 @@ def particle_stress(msh,dt):
 
         ip.material.update_stress(ip,dt)
         
-def interpolation_functions_values(msh):    
+def interpolation_functions_values(msh,integration_scheme):    
     """
     Update the values of the nodal interpolation functions and its gradients
 
@@ -150,20 +150,37 @@ def interpolation_functions_values(msh):
     ---------
     msh: mesh
         a mesh object
+    integration_scheme: string
+        a string with the interpolation shceme, can be 'linear' or 'cpGIMP'
     """
     for ip in msh.particles:
         
         # current element
         ie=ip.element
         
-        # interpolation functions
-        ip.N1=shape.NiLinear(ip.position,ie.n1.x,ie.L)
-        ip.N2=shape.NiLinear(ip.position,ie.n2.x,ie.L)
+        if integration_scheme=="linear":
         
-        # interpolation functions gradients
-        ip.dN1=shape.dNiLinear(ip.position,ie.n1.x,ie.L)
-        ip.dN2=shape.dNiLinear(ip.position,ie.n2.x,ie.L)
+            # interpolation functions
+            ip.N1=shape.NiLinear(ip.position,ie.n1.x,ie.L)
+            ip.N2=shape.NiLinear(ip.position,ie.n2.x,ie.L)
         
+            # interpolation functions gradients
+            ip.dN1=shape.dNiLinear(ip.position,ie.n1.x,ie.L)
+            ip.dN2=shape.dNiLinear(ip.position,ie.n2.x,ie.L)
+        
+        elif integration_scheme=="cpGIMP":
+
+            # interpolation functions
+            ip.N1=shape.NicpGIMP(ie.L,ip.size/2,ip.position,ie.n1.x)
+            ip.N2=shape.NicpGIMP(ie.L,ip.size/2,ip.position,ie.n2.x)
+        
+            # interpolation functions gradients
+            ip.dN1=shape.dNicpGIMP(ie.L,ip.size/2,ip.position,ie.n1.x)
+            ip.dN2=shape.dNicpGIMP(ie.L,ip.size/2,ip.position,ie.n2.x)
+
+        else:
+            print("error in integration scheme keyword")
+
 def  reset_nodal_vaues(msh):
     """
     Reset all nodal values for the next step calculation

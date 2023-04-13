@@ -84,26 +84,26 @@ def NicpGIMP(L,lp,xp,xi):
 		node position
 	"""
 	
-	if (xp-xi) <= (-L-lp):
+	s = xp-xi
+
+	if abs(s)>=(L+lp):
 		return 0
 		
-	if (-L-lp)<=(xp-xi) and (xp-xi)<=(-L+lp):
-		return ((L+lp+(xp-xi))**2)/(4*L*lp)
+	if (-L-lp)<s and s<=(-L+lp):
+		return ((L+lp+s)**2)/(4*L*lp)
 	
-	if (-L+lp)<=(xp-xi) and (xp-xi)<=(-lp):
-		return 1 + (xp-xi)/L
+	if (-L+lp)<s and s<=(-lp):
+		return 1 + (s/L)
 
-	if (-lp)<=(xp-xi) and (xp-xi)<= (lp):
-		return 1 - ((xp-xi)**2 + lp**2)/(2*L*lp)
+	if (-lp)<s and s<=lp:
+		return 1 - (s**2 + lp**2)/(2*L*lp)
 	
-	if (lp)<=(xp-xi) and (xp-xi)<= (L-lp):
-		return 1-(xp-xi)/L
+	if lp<s and s<=(L-lp):
+		return 1 - (s/L)
 
-	if (L-lp)<=(xp-xi) and (xp-xi) <= (L+lp):
-		return ((L+lp-(xp-xi))**2)/(4*L*lp)
-		
-	if (L+lp)<=(xp-xi):
-		return 0
+	if (L-lp)<s and s<=(L+lp):
+		return ((L+lp-s)**2)/(4*L*lp)
+
 
 def dNicpGIMP(L,lp,xp,xi):
 	"""
@@ -124,24 +124,23 @@ def dNicpGIMP(L,lp,xp,xi):
 
 	s = xp-xi
 
-	if abs(s) >= (L+lp):
+	if abs(s)>=(L+lp):
 		return 0
 	
-	if (-L-lp<s<=-L+lp):
+	if (-L-lp)<s and s<=(-L+lp):
 		return (L+lp+s)/(2*L*lp)
 	
-	if (-L+lp<s<=-lp):
+	if (-L+lp)<s and s<=(-lp):
 		return 1/L
 	
-	if (-lp<s<=lp):
-		return -s/L/lp
+	if (-lp)<s and s<=lp:
+		return -s/(L*lp)
 	
-	if lp<s<=L-lp:
+	if lp<s and s<=(L-lp):
 		return -1/L
 	
-	if (L-lp<s<=L+lp):
+	if (L-lp)<s and s<=(L+lp):
 		return -(L+lp-s)/(2*L*lp)
-
 
 def test_interpolation_functions(x1,x2,xI,L,shape_type):
 	"""

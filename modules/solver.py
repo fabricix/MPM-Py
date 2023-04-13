@@ -49,7 +49,7 @@ def explicit_solution(msh,msetup):
 	    update.particle_list(msh)
 
 	    # update interpolation functions values
-	    update.interpolation_functions_values(msh)
+	    update.interpolation_functions_values(msh,msetup.interpolation_type)
 	    
 	    # particle mass to grid nodal mass
 	    interpola.mass_to_nodes(msh)
