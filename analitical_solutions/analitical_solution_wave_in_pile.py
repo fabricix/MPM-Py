@@ -19,8 +19,10 @@ dt : float
 	time step
 po : float
 	external load
-x_sol : float
+x : float
 	position to get the solution
+n_sum : int
+	number of terms considered in the series summation of the analytical solution
 
 Data
 ----
@@ -35,7 +37,7 @@ Fabricio Fernandez <fabricio.hmf@gmail.com>
 # import external modules
 import numpy as np
 
-def wave_in_pile_fixed_and_loaded(L,E,rho,time,dt,po,x):
+def wave_in_pile_fixed_and_loaded(L,E,rho,time,dt,po,x,n_sum):
 	"""calculate the solution of the wave equation in a pile"""
 
 	# Poisson's ratio in 1D is assumed to be equal to 0
@@ -62,7 +64,7 @@ def wave_in_pile_fixed_and_loaded(L,E,rho,time,dt,po,x):
 		u_wave_sum = 0
 		v_wave_sum = 0
         
-		for n in range(1,100):
+		for n in range(1,n_sum):
 
 			lam = (2*n-1)*np.pi/2/L
 			

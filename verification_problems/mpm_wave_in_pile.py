@@ -76,7 +76,7 @@ fig,ax = plt.subplots()
 ax.plot(msetup.solution_array[0],msetup.solution_array[1],linestyle='solid',linewidth=1.5,color="blue",marker='o',markersize=0,markerfacecolor='none',label='MPM')
 
 # plot the analytical solution
-[anal_xt,anal_vt, anal_t] = wip.wave_in_pile_fixed_and_loaded(L=L,E=elastic.E,rho=elastic.density,time=msetup.time,dt=msetup.dt/2,po=po,x=pos_initial)
+[anal_xt,anal_vt, anal_t] = wip.wave_in_pile_fixed_and_loaded(L=L,E=elastic.E,rho=elastic.density,time=msetup.time,dt=msetup.dt/2,po=po,x=pos_initial,n_sum=1000)
 ax.plot(anal_t,anal_xt,'r',linewidth=1.5,label='Analytical solution')
 
 # vertical line for the theorical arrival time

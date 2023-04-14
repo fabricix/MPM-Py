@@ -2,3 +2,4 @@ __pycache__/
 *.html
 *.sublime-project
 *.sublime-workspace
+*.code-workspace
