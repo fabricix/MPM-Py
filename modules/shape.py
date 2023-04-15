@@ -162,8 +162,10 @@ def test_interpolation_functions(x1,x2,xI,L,shape_type):
 	import numpy as np
 	import matplotlib.pyplot as plt
 
+	# particle position	
 	x = np.linspace(x1,x2,num=500);
 
+	# interpolation function values and its gradients
 	ni = np.zeros_like(x)
 	dni = np.zeros_like(x)
 
@@ -187,3 +189,44 @@ def test_interpolation_functions(x1,x2,xI,L,shape_type):
 	plt.ylabel(r"$N_I$, $dN_I/dx$")
 	plt.xlabel(r"x")
 	plt.show()
+
+def get_interpolation_functions(x1,x2,xI,L,shape_type):
+	"""
+	Returns the interpolation functions Ni and its gradients dNi
+
+	Arguments
+	---------
+	x1 : float
+		initial particle position
+	x2 : float
+		final particle position
+	xI : float
+		fixed node position
+	L  : float
+		element length
+	shape_type: string
+		interpolation function type, may be 'linear' or 'cpGIMP'
+	"""
+	import numpy as np
+	import matplotlib.pyplot as plt
+
+	# particle position	
+	x = np.linspace(x1,x2,num=500);
+
+	# interpolation function values and its gradients
+	ni = np.zeros_like(x)
+	dni = np.zeros_like(x)
+
+	# linear shape function
+	if (shape_type=='linear'):
+		for i in range(len(x)):
+			ni[i]  = NiLinear(x[i],xI,L)
+			dni[i] = dNiLinear(x[i],xI,L)
+	
+	# cpGIMP shape function
+	elif (shape_type=='cpGIMP'):
+		for i in range(len(x)):
+			ni[i]  = NicpGIMP(L,L/4,x[i],xI)
+			dni[i] = dNicpGIMP(L,L/4,x[i],xI)
+
+	return [x, ni, dni]
